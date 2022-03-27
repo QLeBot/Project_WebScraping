@@ -69,6 +69,9 @@ page_joeurDetails = requests.get("https://www.transfermarkt.fr/"+str(club)+"/tra
 page_joeurInfos = requests.get("https://www.transfermarkt.fr/"+str(joueur)+"/profil/spieler/495667")
 #Output: info des joueur
 
+#------------------------------
+#Moi
+
 #Statistiques équipes
 page_equipeStats = requests.get("https://fr.whoscored.com/Regions/74/Tournaments/22/Seasons/8671/Stages/19866/TeamStatistics/France-Ligue-1-2021-2022")
 #Output: stats équipe
