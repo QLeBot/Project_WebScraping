@@ -20,7 +20,7 @@ csvWriter = csv.writer(csvFile,delimiter=';', quotechar='"')
 #Création du nom des collones 
 csvWriter.writerow(['Row1','Row2'])
 
-#Ecriture dans le fichier CSV
+#Ecriture dans le fichier CSVcds
 #In for loop
 csvWriter.writerow((row_data))
 
