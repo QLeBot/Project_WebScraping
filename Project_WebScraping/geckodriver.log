@@ -1,0 +1,36 @@
+1648395519442	geckodriver	INFO	Listening on 127.0.0.1:50678
+1648395522497	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Quentin\\AppData\\Local\\Temp\\rust_mozprofileRn4jOf"
+1648395522754	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Quentin\\AppData\\Local\\Temp\\rust_mozprofileRn4jOf\\search.json.mozlz4", (void 0)))
+1648395524338	Marionette	INFO	Listening on port 50695
+1648395524564	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://fr.whoscored.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2010503669, line 1: unreachable code after return statement
+JavaScript warning: https://fr.whoscored.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2010503669, line 1: unreachable code after return statement
+JavaScript warning: https://fr.whoscored.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2010503669 line 1 > eval, line 1: unreachable code after return statement
+JavaScript error: https://fr.whoscored.com/Regions/74/Tournaments/22/Seasons/8671/Stages/19866/TeamStatistics/France-Ligue-1-2021-2022, line 1251: TypeError: e.data.substring is not a function
+JavaScript error: https://fr.whoscored.com/Regions/74/Tournaments/22/Seasons/8671/Stages/19866/TeamStatistics/France-Ligue-1-2021-2022, line 1251: TypeError: e.data.substring is not a function
+1648395544997	Marionette	INFO	Stopped listening on port 50695
+
+###!!! [Parent][PContentParent] Error: Send(msgname=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Parent][PGPUParent] Error: RunMessage(msgname=PGPU::Msg_ShutdownVR) Channel closing: too late to send/recv, messages will be lost
+
+1648400545997	geckodriver	INFO	Listening on 127.0.0.1:62536
+1648400549051	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62537" "-no-remote" "-profile" "C:\\Users\\lecom\\AppData\\Local\\Temp\\rust_mozprofileeJ02rX"
+1648400566695	geckodriver	INFO	Listening on 127.0.0.1:62665
+1648400569751	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62666" "-no-remote" "-profile" "C:\\Users\\lecom\\AppData\\Local\\Temp\\rust_mozprofile0ilBJx"
+1648400569959	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lecom\\AppData\\Local\\Temp\\rust_mozprofile0ilBJx\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:62666/devtools/browser/cbad544a-dfdf-4978-b625-7530dc7908b5
+1648400571479	Marionette	INFO	Listening on port 62671
+1648400571808	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://fr.whoscored.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1296744150, line 1: unreachable code after return statement
+JavaScript warning: https://fr.whoscored.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1296744150, line 1: unreachable code after return statement
+JavaScript warning: https://fr.whoscored.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1296744150 line 1 > eval, line 1: unreachable code after return statement
+1648400596784	Marionette	INFO	Stopped listening on port 62671
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
