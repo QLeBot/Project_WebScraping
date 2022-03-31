@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Mar 27 19:48:49 2022
+
+@author: djiko
+"""
+
 def valuetoint(value_string):
     if value_string[-6:]=='mio. €':
         return int(float(value_string[:-7].replace(',','.'))*1e6)
