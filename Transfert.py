@@ -57,9 +57,9 @@ def getListTransfert(url_club,saison):
         Joueur = dict()
         cond_sortie=True
         Players = soup.find(id="yw1").find_all('tr')[index_joueur].find_all('td')
-        for i in range (len(Players)):
-            print("\n"+str(i))
-            print(Players[i])
+        #for i in range (len(Players)):
+            #print("\n"+str(i))
+            #print(Players[i])
         if Players[12].text=="-":
             break
         for i in range (len(Players)):
@@ -93,9 +93,11 @@ def getListTransfert(url_club,saison):
 
 
 
-Liste_joueur= getListTransfert("/fc-paris-saint-germain/startseite/verein/583", 2018)
+"""Liste_joueur= getListTransfert("/fc-paris-saint-germain/startseite/verein/583", 2018)
 print("\nJoueur")
-print(Liste_joueur)
+print(Liste_joueur)"""
+
+
     
 
 #soup=Players[3].find('a')

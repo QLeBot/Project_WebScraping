@@ -1,0 +1,101 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Mar 31 11:53:34 2022
+
+@author: djiko
+"""
+
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import unidecode
+
+def valuetoint(value_string):
+    if value_string[-6:]=='mio. €':
+        return int(float(value_string[:-7].replace(',','.'))*1e6)
+    if value_string[-3:]=='K €':
+        return int(float(value_string[:-4].replace(',','.'))*1e3)
+    if value_string == "Transfert libre":
+        return 0
+
+headers = {'User-Agent': 
+           'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'}
+
+liste_annees = []
+for i in range(2021,2009,-1):
+    liste_annees.append(i)
+print(liste_annees)
+#page = "https://www.transfermarkt.fr/ligue-1/startseite/wettbewerb/FR1/plus/?saison_id=2021"
+Dict_Clubs = dict()
+liste_league=["https://www.transfermarkt.fr/ligue-1/startseite/wettbewerb/FR1/plus",
+              "https://www.transfermarkt.fr/premier-league/startseite/wettbewerb/GB1/plus",
+              "https://www.transfermarkt.fr/serie-a/startseite/wettbewerb/IT1/plus",
+              "https://www.transfermarkt.fr/bundesliga/startseite/wettbewerb/L1/plus",
+              "https://www.transfermarkt.fr/laliga/startseite/wettbewerb/ES1/plus"
+    ]
+for league_url in liste_league :
+    for element in liste_annees:
+        #page = "https://www.transfermarkt.fr/ligue-1/startseite/wettbewerb/FR1/plus/?saison_id={}".format(element)
+        page = league_url+"/?saison_id={}".format(element)
+    
+        print(page)
+    
+        pageTree = requests.get(page, headers=headers)
+        soup = BeautifulSoup(pageTree.content, 'html.parser')
+        cond_sortie=False
+        index=1
+        #while (index <len( soup.find(id="yw1").find_all('tr'))) and (cond_sortie==False):
+        for index in range (1,len( soup.find(id="yw1").find_all('tr')),1):
+            Club = dict()
+            Clubs = soup.find(id="yw1").find_all('tr')[index].find_all('td')
+            #print(Clubs)
+            
+            #Club["Lien_Club"] =Clubs[1].find('a')['href']
+            if Clubs[1].text.strip() == "":
+                """Dict_Clubs['Pour les 20 clubs annee {}'.format(element)] = {"Lien_URL_Club" : "NaN",
+                                                    "Effectif" : '{}'.format(Clubs[2].text.strip()),
+                                                    "Moyenne age" : '{}'.format(Clubs[3].text.strip()),
+                                                    "Joueurs Etrangers " : '{}'.format(Clubs[4].text.strip()),
+                                                    "Valeur Moyenne" : '{}'.format(valuetoint(Clubs[5].text)),
+                                                    "Valeur Totale" : '{}'.format(valuetoint(Clubs[6].text))}"""
+            else:
+                Dict_Clubs["{} annee {}".format(Clubs[1].text.strip(),element)] = {"Lien_URL_Club" : '{}'.format(Clubs[1].find('a')['href']),
+                                                                "Effectif" : '{}'.format(Clubs[2].text.strip()),
+                                                                "Moyenne age" : '{}'.format(float(Clubs[3].text.replace(",","."))),
+                                                                "Joueurs Etrangers " : '{}'.format(int(Clubs[4].text.strip())),
+                                                                "Valeur Moyenne" : '{}'.format(valuetoint(Clubs[5].text)),
+                                                                "Valeur Totale" : '{}'.format(valuetoint(Clubs[6].text)),
+                                                                "Saison" : element,
+                                                                "Nom_Club":Clubs[1].text.strip()}
+        #Dico_Par_Annee = Dict_Clubs
+
+
+print(Dict_Clubs)
+print("\n")
+
+import csv
+
+with open('liste_club.csv', 'w',newline='') as f:
+    fieldnames = ['Nom_Club','Saison','Lien_URL_Club', 'Effectif', 'Moyenne age','Joueurs Etrangers','Valeur Moyenne','Valeur Totale']
+    writer = csv.DictWriter(f, fieldnames=fieldnames)
+    writer.writeheader()
+    for key in Dict_Clubs:
+        liste = []
+        for cle in Dict_Clubs[key]:
+            liste.append(Dict_Clubs[key][cle])
+            #f.write("%s,%s\n"%(key,Dict_Clubs[key][cle]))
+        writer.writerow({'Nom_Club':unidecode.unidecode(liste[7]),'Saison':liste[6],'Lien_URL_Club' : liste[0], 'Effectif' : liste[1], 'Moyenne age' : liste[2],'Joueurs Etrangers' : liste[3],'Valeur Moyenne' : liste[4],'Valeur Totale' : liste[5]})
+
+"""
+myDic = { "a" : {"mdr" : 1 }, "b" : {"salut je teste" :2}, "c" : { "oula" :15}}
+with open('myFile.csv', 'w', newline='') as csvfile:
+    fieldnames = ['Nom_Club','Lien_URL_Club', 'Effectif', 'Moyenne age','Joueurs Etrangers','Valeur Moyenne','Valeur Totale']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    for element in myDic:
+        for key in myDic[element]:
+            print(myDic[element].keys())
+            print(myDic[element][key])
+        writer.writerow({'Nom_Club': myDic[element].keys(), 'Valeur Totale': myDic[element][key]})
+"""
